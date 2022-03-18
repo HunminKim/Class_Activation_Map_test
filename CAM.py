@@ -4,8 +4,8 @@ import numpy as np
 import cv2
 import torch
 
-from util import drow_heatmap
-from model import ClassificationModel
+from core.util import drow_heatmap
+from core.model import ClassificationModel
 
 def define_argparser():
     parser = argparse.ArgumentParser('Class Activation Map')
