@@ -4,7 +4,7 @@ import torch
 import torchvision
 
 
-def drow_heatmap(img, result, featuremap, parameter, height, width):
+def drow_heatmap(img, result, featuremap, parameter, height, width, overlap_heatmap=0.3):
     sel_params = parameter[result.argmax()]
     sel_params = sel_params.view(-1, 1, 1)
     _, w, h = featuremap.shape
@@ -19,5 +19,5 @@ def drow_heatmap(img, result, featuremap, parameter, height, width):
     heatmap = heatmap.astype(np.uint8).copy()
     
     heatmap = cv2.applyColorMap(heatmap, cv2.COLORMAP_JET)
-    heatmap_img = (heatmap * 0.3) + (img * 0.7)
+    heatmap_img = (heatmap * overlap_heatmap) + (img * (1-overlap_heatmap))
     return heatmap_img
