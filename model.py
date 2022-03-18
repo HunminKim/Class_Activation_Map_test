@@ -3,6 +3,9 @@ import torchvision.transforms as transforms
 import torch
 
 class ClassificationModel(torch.nn.Module):
+    '''
+    Sample Classification Model(ImageNet pretrained model)
+    '''
     def __init__(self):
         super().__init__()
 
