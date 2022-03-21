@@ -21,8 +21,9 @@ def main():
     parameter = model.fc_parameters
     img = cv2.imread(args.input_img)
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    if isinstance(img, type(None)):
-        print('no image')
+
+    if not isinstance(img, np.ndarray):
+        print('Check input image')
         exit()
     height, width, _ = np.shape(img)
 
